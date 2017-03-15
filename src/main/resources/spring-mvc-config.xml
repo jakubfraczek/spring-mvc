@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-    <context:component-scan base-package="pl.sda" />
+    <context:component-scan base-package="pl.sda"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
@@ -21,7 +21,51 @@
         </property>
     </bean>
 
-    <mvc:resources mapping="/resources/**" location="/resources/" />
-    <mvc:annotation-driven />
+    <mvc:resources mapping="/resources/**" location="/resources/"/>
+    <mvc:annotation-driven/>
+
+    <bean id="studen1" class="pl.sda.model.Student">
+        <property name="login" value="pupa"/>
+        <property name="firstName" value="Jan"/>
+        <property name="lastName" value="Nowak"/>
+        <property name="indexNumber" value="12"/>
+        <property name="gender" value="M"/>
+        <property name="specialisation" value="IT"/>
+    </bean>
+    <bean id="studen2" class="pl.sda.model.Student">
+        <property name="login" value="GrazynaGrazyna"/>
+        <property name="firstName" value="Anna"/>
+        <property name="lastName" value="Iksinska"/>
+        <property name="indexNumber" value="13"/>
+        <property name="gender" value="F"/>
+        <property name="specialisation" value="LAW"/>
+    </bean>
+    <bean id="studen3" class="pl.sda.model.Student">
+        <property name="login" value="HalinaMalina"/>
+        <property name="firstName" value="Anna"/>
+        <property name="lastName" value="Nowak"/>
+        <property name="indexNumber" value="14"/>
+        <property name="gender" value="F"/>
+        <property name="specialisation" value="MED"/>
+    </bean>
+    <bean id="studen4" class="pl.sda.model.Student">
+        <property name="login" value="JanuszekKrol"/>
+        <property name="firstName" value="Janusz"/>
+        <property name="lastName" value="Kowalski"/>
+        <property name="indexNumber" value="15"/>
+        <property name="gender" value="M"/>
+        <property name="specialisation" value="MGMT"/>
+    </bean>
+
+    <bean name="students" class="pl.sda.dao.InMemoryStudentDAO">
+    <property name="students">
+        <list>
+            <ref bean="studen1"/>
+            <ref bean="studen2"/>
+            <ref bean="studen3"/>
+            <ref bean="studen4"/>
+        </list>
+    </property>
+    </bean>
 
 </beans>
