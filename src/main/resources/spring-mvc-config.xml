@@ -68,4 +68,8 @@
     </property>
     </bean>
 
+    <bean name="service" class="pl.sda.service.StudentServiceImpl">
+        <property name="studentDAO" ref="students"/>
+    </bean>
+
 </beans>

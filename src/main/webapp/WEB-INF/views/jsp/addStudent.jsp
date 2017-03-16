@@ -9,10 +9,10 @@
 </head>
 <body>
 
-<form:form action="/studentform" method="post">
+<form:form action="/addStudent" method="post" commandName="student">
     <div>
-        <form:label path="login">Login</form:label>
-        <form:input path="login"/>
+        <label>Login</label>
+        <form:input path="login"></form:input>
     </div>
     <div>
         <form:label path="firstName">Name</form:label>
@@ -29,18 +29,15 @@
     </div>
     <div>
         <form:label path="gender"/>
-        <form:radiobutton path="gender" value="F"/>female
-        <form:radiobutton path="gender" value="M"/>male
+        <form:radiobuttons path="gender"/>
     </div>
     <div>
         <form:label path="specialisation">Specialization</form:label>
         <form:select path="specialisation">
-            <option value="MED">MEDICINE</option>
-            <option value="IT">IT</option>
-            <option value="MGMT">MANAGEMENT</option>
-            <option value="LAW">LAW</option>
+            <form:options items="${specENUM}"/>
         </form:select>
     </div>
+    <input type="submit" value="submit">
 </form:form>
 
 </body>

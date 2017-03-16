@@ -1,60 +1,71 @@
 package pl.sda.dao;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pl.sda.model.Gender;
 import pl.sda.model.Specialisation;
 import pl.sda.model.Student;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:/spring-mvc-config.xml"})
 public class InMemoryStudentDAOTest {
 
-    InMemoryStudentDAO studentsDAO = new InMemoryStudentDAO();
-    List<Student> studentsList;
+    @Resource
+    StudentDAO studentsDao;
+
+    StudentDAO studentsDaoTest;
 
     @Before
     public void setUp() {
-        studentsList = new ArrayList<>();
-        studentsList.add(new Student("pupa", "Jan", "Nowak", 12, Gender.M, Specialisation.IT));
-        studentsList.add(new Student("GrazynaGrazyna", "Anna", "Iksinska", 13, Gender.F, Specialisation.LAW));
-        studentsList.add(new Student("HalinaMalina", "Anna", "Nowak", 14, Gender.F, Specialisation.MED));
-        studentsList.add(new Student("JanuszekKrol", "Janusz", "Kowalski", 15, Gender.M, Specialisation.MGMT));
+        studentsDaoTest = studentsDao;
     }
 
     @Test
     public void getStudentByLogin() throws Exception {
-        assertEquals(studentsList.get(1), studentsDAO.getStudentByLogin("GrazynaGrazyna"));
-        assertEquals(studentsList.get(0), studentsDAO.getStudentByLogin("pupa"));
+        assertEquals("Anna", studentsDaoTest.getStudentByLogin("GrazynaGrazyna").getFirstName());
+        assertEquals(12, studentsDaoTest.getStudentByLogin("pupa").getIndexNumber());
     }
 
     @Test
     public void addStudent() throws Exception {
-
+        assertTrue(studentsDaoTest.addStudent(new Student("MarianFlarian", "Marian", "Flarian", 16, Gender.M, Specialisation.MED)));
+        assertEquals(5, studentsDaoTest.getAllStudents().size());
+        assertEquals("Marian", studentsDaoTest.getStudentByLogin("MarianFlarian").getFirstName());
     }
 
     @Test
     public void removeStudent() throws Exception {
-
+        assertTrue(studentsDaoTest.removeStudent("HalinaMalina"));
+        assertEquals(3, studentsDaoTest.getAllStudents().size());
     }
 
     @Test
     public void updateStudent() throws Exception {
+        studentsDaoTest.updateStudent(new Student("HalinaMalina", "Anna", "Nowak", 14, Gender.F, Specialisation.IT));
 
+        assertEquals("HalinaMalina", studentsDaoTest.getAllStudents().get(2).getLogin());
+        assertEquals(Specialisation.IT, studentsDaoTest.getStudentByLogin("HalinaMalina").getSpecialisation());
     }
 
     @Test
     public void getAllStudents() throws Exception {
-       assertNotNull(studentsDAO.getAllStudents());
+        Assert.assertNotNull(studentsDaoTest.getAllStudents());
     }
 
     @Test
     public void findStudentsByName() throws Exception {
-
+        assertNotNull(studentsDaoTest.findStudentsByName("Anna"));
+        assertEquals(2, studentsDaoTest.findStudentsByName("Anna").size());
     }
 
 }

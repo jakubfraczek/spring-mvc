@@ -18,7 +18,7 @@ public class InMemoryStudentDAO implements StudentDAO {
 
     @Override
     public boolean addStudent(Student student) {
-        if (students.stream().filter(s -> s.getLogin().equals(student.getLogin())).findAny().get() != null) {
+        if (students.stream().filter(s -> s.getLogin().equals(student.getLogin())).findFirst().orElse(null) == null) {
             students.add(student);
             return true;
         } else {
@@ -49,7 +49,7 @@ public class InMemoryStudentDAO implements StudentDAO {
 
     @Override
     public List<Student> findStudentsByName(String name) {
-        return students.stream().filter(s -> !s.getLastName().equals(name)).collect(Collectors.toList());
+        return students.stream().filter(s -> s.getFirstName().equals(name)).collect(Collectors.toList());
     }
 
     public void setStudents(List<Student> students){
