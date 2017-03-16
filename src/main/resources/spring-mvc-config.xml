@@ -24,7 +24,7 @@
     <mvc:resources mapping="/resources/**" location="/resources/"/>
     <mvc:annotation-driven/>
 
-    <bean id="studen1" class="pl.sda.model.Student">
+    <bean id="student1" class="pl.sda.model.Student">
         <property name="login" value="pupa"/>
         <property name="firstName" value="Jan"/>
         <property name="lastName" value="Nowak"/>
@@ -32,7 +32,7 @@
         <property name="gender" value="M"/>
         <property name="specialisation" value="IT"/>
     </bean>
-    <bean id="studen2" class="pl.sda.model.Student">
+    <bean id="student2" class="pl.sda.model.Student">
         <property name="login" value="GrazynaGrazyna"/>
         <property name="firstName" value="Anna"/>
         <property name="lastName" value="Iksinska"/>
@@ -40,7 +40,7 @@
         <property name="gender" value="F"/>
         <property name="specialisation" value="LAW"/>
     </bean>
-    <bean id="studen3" class="pl.sda.model.Student">
+    <bean id="student3" class="pl.sda.model.Student">
         <property name="login" value="HalinaMalina"/>
         <property name="firstName" value="Anna"/>
         <property name="lastName" value="Nowak"/>
@@ -48,7 +48,7 @@
         <property name="gender" value="F"/>
         <property name="specialisation" value="MED"/>
     </bean>
-    <bean id="studen4" class="pl.sda.model.Student">
+    <bean id="student4" class="pl.sda.model.Student">
         <property name="login" value="JanuszekKrol"/>
         <property name="firstName" value="Janusz"/>
         <property name="lastName" value="Kowalski"/>
@@ -60,10 +60,10 @@
     <bean name="students" class="pl.sda.dao.InMemoryStudentDAO">
     <property name="students">
         <list>
-            <ref bean="studen1"/>
-            <ref bean="studen2"/>
-            <ref bean="studen3"/>
-            <ref bean="studen4"/>
+            <ref bean="student1"/>
+            <ref bean="student2"/>
+            <ref bean="student3"/>
+            <ref bean="student4"/>
         </list>
     </property>
     </bean>
