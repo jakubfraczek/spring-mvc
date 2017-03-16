@@ -2,7 +2,7 @@ package pl.sda.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.sda.dao.StudentDAO;
+import pl.sda.dao.InMemoryStudentDAO;
 import pl.sda.model.Student;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 public class StudentServiceImpl implements StudentService {
 
     @Autowired
-    private StudentDAO studentDAO;
+    private InMemoryStudentDAO studentDAO;
 
     @Override
     public Student getStudentByLogin(String login) {
