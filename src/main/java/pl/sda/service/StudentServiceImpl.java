@@ -46,4 +46,8 @@ public class StudentServiceImpl implements StudentService {
     public void setStudentDAO(StudentDAO studentDAO) {
         this.studentDAO = studentDAO;
     }
+
+    public StudentDAO getStudentDAO() {
+        return studentDAO;
+    }
 }

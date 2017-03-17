@@ -3,6 +3,7 @@ package pl.sda.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -29,7 +30,7 @@ public class StudentFormController {
 
     @RequestMapping(value = "/addStudent", method = RequestMethod.POST)
     public ModelAndView saveStudent(@ModelAttribute("student") Student student) {
-        ModelAndView model = new ModelAndView("redirect:/viewStudents");
+        ModelAndView model = new ModelAndView("redirect:/studentsList");
 
 
         studentService.addStudent(student);
@@ -37,16 +38,24 @@ public class StudentFormController {
         return model;
     }
 
-    @RequestMapping(value = "/viewStudents", method = RequestMethod.GET)
+    @RequestMapping(value = "/studentsList", method = RequestMethod.GET)
     public ModelAndView viewStudents(){
-        ModelAndView model = new ModelAndView("viewStudents");
+        ModelAndView model = new ModelAndView("studentsList");
         model.addObject("students", studentService.getAllStudents());
         return model;
     }
 
-    @RequestMapping(value = "/studentDetails", method = RequestMethod.POST)
-    public ModelAndView studentDetails(@ModelAttribute("student") Student student) {
-        ModelAndView model = new ModelAndView("redirect:/viewStudents");
+    @RequestMapping(value = "/student/{login}", method = RequestMethod.GET)
+    public ModelAndView studentDetails(@PathVariable("login") String login) {
+        ModelAndView model = new ModelAndView("viewStudents");
+        model.addObject("s", studentService.getStudentByLogin(login));
+        return model;
+    }
+
+    @RequestMapping(value = "/student/{login}/er", method = RequestMethod.GET)
+    public ModelAndView studentDetails(@PathVariable("login") String login) {
+        ModelAndView model = new ModelAndView("viewStudents");
+        model.addObject("s", studentService.getStudentByLogin(login));
         return model;
     }
 }

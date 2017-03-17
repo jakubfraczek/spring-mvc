@@ -4,26 +4,25 @@
 
 <html>
 <head>
-    <title>Students View</title>
+    <title>Student details</title>
 </head>
 <body>
 
 <table>
-
+    <th>Index Number</th>
+    <th>Login</th>
     <th>First Name</th>
     <th>Last Name</th>
-    <th>Index Number</th>
     <th>Gender</th>
     <th>Specialisation</th>
-    <c:forEach items="${students}" var="s">
         <tr>
+            <td><c:out value="${s.indexNumber}"/></td>
+            <td><c:out value="${s.login}"/></td>
             <td><c:out value="${s.firstName}"/></td>
             <td><c:out value="${s.lastName}"/></td>
-            <td><c:out value="${s.indexNumber}"/></td>
             <td><c:out value="${s.gender.gender}"/></td>
             <td><c:out value="${s.specialisation.specialisation}"/></td>
         </tr>
-    </c:forEach>
 </table>
 
 </body>

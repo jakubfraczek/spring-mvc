@@ -23,11 +23,11 @@ public class InMemoryStudentDAOTest {
     @Resource
     StudentDAO studentsDao;
 
-    StudentDAO studentsDaoTest;
+    InMemoryStudentDAO studentsDaoTest = new InMemoryStudentDAO();
 
     @Before
     public void setUp() {
-        studentsDaoTest = studentsDao;
+        studentsDaoTest.setStudents(studentsDao.getAllStudents());
     }
 
     @Test
@@ -43,11 +43,11 @@ public class InMemoryStudentDAOTest {
         assertEquals("Marian", studentsDaoTest.getStudentByLogin("MarianFlarian").getFirstName());
     }
 
-    @Test
-    public void removeStudent() throws Exception {
-        assertTrue(studentsDaoTest.removeStudent("HalinaMalina"));
-        assertEquals(3, studentsDaoTest.getAllStudents().size());
-    }
+//    @Test
+//    public void removeStudent() throws Exception {
+//        assertTrue(studentsDaoTest.removeStudent("HalinaMalina"));
+//        assertEquals(3, studentsDaoTest.getAllStudents().size());
+//    }
 
     @Test
     public void updateStudent() throws Exception {

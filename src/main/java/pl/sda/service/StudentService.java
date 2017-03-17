@@ -1,5 +1,6 @@
 package pl.sda.service;
 
+import pl.sda.dao.StudentDAO;
 import pl.sda.model.Student;
 
 import java.util.List;
@@ -16,4 +17,5 @@ public interface StudentService {
     List<Student> getAllStudents();
 
     List<Student> findStudentsByName(String name);
+    StudentDAO getStudentDAO();
 }
