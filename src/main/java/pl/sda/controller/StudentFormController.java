@@ -52,10 +52,11 @@ public class StudentFormController {
         return model;
     }
 
-    @RequestMapping(value = "/student/{login}/er", method = RequestMethod.GET)
-    public ModelAndView studentDetails(@PathVariable("login") String login) {
-        ModelAndView model = new ModelAndView("viewStudents");
-        model.addObject("s", studentService.getStudentByLogin(login));
+    @RequestMapping(value = "/student/{login}/remove", method = RequestMethod.POST)
+    public ModelAndView RemoveStudent(@PathVariable("login") String login) {
+        ModelAndView model = new ModelAndView("studentsList");
+        studentService.removeStudent(login);
+        model.addObject("students", studentService.getAllStudents());
         return model;
     }
 }

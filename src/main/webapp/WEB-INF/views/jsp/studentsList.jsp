@@ -19,7 +19,7 @@
 
                 <td><a href="/<c:out value="student/${s.login}"/>"><c:out value="${s.firstName}"/></a></td>
                 <td><a href="/<c:out value="student/${s.login}"/>"><c:out value="${s.lastName}"/></a></td>
-            <form:form>
+            <form:form method="post">
                 <td><button value="${s.login}" formaction="/student/${s.login}/remove" type="submit">remove</button></td>
             </form:form>
         </tr>
