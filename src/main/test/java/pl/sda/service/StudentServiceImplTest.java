@@ -20,14 +20,8 @@ public class StudentServiceImplTest {
 
     @Qualifier("service")
     @Resource
-    StudentService studentService;
+    StudentService studentServiceTest;
 
-    StudentServiceImpl studentServiceTest = new StudentServiceImpl();
-
-    @Before
-    public void setUp(){
-        studentServiceTest.setStudentDAO(studentService.getStudentDAO());
-    }
 
     @Test
     public void getStudentByLogin() throws Exception {

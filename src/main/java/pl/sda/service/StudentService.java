@@ -17,5 +17,4 @@ public interface StudentService {
     List<Student> getAllStudents();
 
     List<Student> findStudentsByName(String name);
-    StudentDAO getStudentDAO();
 }

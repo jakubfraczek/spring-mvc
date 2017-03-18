@@ -9,7 +9,7 @@ import pl.sda.model.Student;
 import java.util.List;
 
 
-public class StudentServiceImpl implements StudentService {
+public class StudentServiceInMemory implements StudentService {
 
     private StudentDAO studentDAO;
 

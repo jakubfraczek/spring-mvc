@@ -12,7 +12,7 @@
 </head>
 <body>
 <a href="/addStudent">Add Student</a><br>
-<a href="/studentsList">View Students</a>
+<a href="/studentsList">View Students</a><br>
 <a href="/findByName">Find students by name</a>
 </body>
 </html>

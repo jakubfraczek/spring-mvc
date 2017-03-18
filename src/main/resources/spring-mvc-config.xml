@@ -11,6 +11,7 @@
         http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
     <context:component-scan base-package="pl.sda"/>
+    <import resource="spring-data-jpa-config.xml"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
@@ -28,7 +29,7 @@
         <property name="login" value="pupa"/>
         <property name="firstName" value="Jan"/>
         <property name="lastName" value="Nowak"/>
-        <property name="indexNumber" value="12"/>
+        <property name="indexNumber" value="12345678"/>
         <property name="gender" value="M"/>
         <property name="specialisation" value="IT"/>
     </bean>
@@ -36,7 +37,7 @@
         <property name="login" value="GrazynaGrazyna"/>
         <property name="firstName" value="Anna"/>
         <property name="lastName" value="Iksinska"/>
-        <property name="indexNumber" value="13"/>
+        <property name="indexNumber" value="12345679"/>
         <property name="gender" value="F"/>
         <property name="specialisation" value="LAW"/>
     </bean>
@@ -44,7 +45,7 @@
         <property name="login" value="HalinaMalina"/>
         <property name="firstName" value="Anna"/>
         <property name="lastName" value="Nowak"/>
-        <property name="indexNumber" value="14"/>
+        <property name="indexNumber" value="12345680"/>
         <property name="gender" value="F"/>
         <property name="specialisation" value="MED"/>
     </bean>
@@ -52,23 +53,23 @@
         <property name="login" value="JanuszekKrol"/>
         <property name="firstName" value="Janusz"/>
         <property name="lastName" value="Kowalski"/>
-        <property name="indexNumber" value="15"/>
+        <property name="indexNumber" value="12345681"/>
         <property name="gender" value="M"/>
         <property name="specialisation" value="MGMT"/>
     </bean>
 
     <bean name="students" class="pl.sda.dao.InMemoryStudentDAO">
-    <property name="students">
-        <list>
-            <ref bean="student1"/>
-            <ref bean="student2"/>
-            <ref bean="student3"/>
-            <ref bean="student4"/>
-        </list>
-    </property>
+        <property name="students">
+            <list>
+                <ref bean="student1"/>
+                <ref bean="student2"/>
+                <ref bean="student3"/>
+                <ref bean="student4"/>
+            </list>
+        </property>
     </bean>
 
-    <bean name="service" class="pl.sda.service.StudentServiceImpl">
+    <bean name="service" class="pl.sda.service.StudentServiceInMemory">
         <property name="studentDAO" ref="students"/>
     </bean>
 
