@@ -1,10 +1,32 @@
 package pl.sda.model;
 
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.*;
+
+
 public class Student {
+    @NotNull(message = "Login name is compulsory")
+    @NotBlank(message = "Login name is compulsory")
+    @Size(min = 2, max = 30, message = "Login is too short or too long")
     private String login;
+
+    @NotNull(message = "First name is compulsory")
+    @NotBlank(message = "First name is compulsory")
+    @Pattern(regexp = "[a-z-A-Z]*", message = "First name has invalid characters")
     private String firstName;
+
+    @NotNull(message = "Last name is compulsory")
+    @NotBlank(message = "Last name is compulsory")
+    @Pattern(regexp = "[a-z-A-Z]*", message = "Last name has invalid characters")
     private String lastName;
+
+    @NotNull(message = "Index number is compulsory")
+//    @NotBlank(message = "Index number is compulsory")
+//    @Pattern(regexp = "[0-9]*", message = "Index number has invalid characters")
+    @Min(value = 10000000, message = "Index number is too short")
+    @Max(value = 99999999, message = "Index number is too long")
     private int indexNumber;
     private Gender gender;
     private Specialisation specialisation;

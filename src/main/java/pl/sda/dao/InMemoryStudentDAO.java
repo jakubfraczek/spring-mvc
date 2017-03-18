@@ -18,7 +18,7 @@ public class InMemoryStudentDAO implements StudentDAO {
 
     @Override
     public boolean addStudent(Student student) {
-        if (students.stream().filter(s -> s.getLogin().equals(student.getLogin())).findFirst().orElse(null) == null) {
+        if (students.stream().filter(s -> s.getLogin().equals(student.getLogin())).findFirst().orElse(null) == null && students.stream().filter(s -> s.getIndexNumber() == (student.getIndexNumber())).findFirst().orElse(null) == null) {
             students.add(student);
             return true;
         } else {

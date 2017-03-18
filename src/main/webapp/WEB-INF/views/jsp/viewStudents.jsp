@@ -7,6 +7,7 @@
     <title>Student details</title>
 </head>
 <body>
+<a href="/home">Home</a>
 
 <table>
     <th>Index Number</th>

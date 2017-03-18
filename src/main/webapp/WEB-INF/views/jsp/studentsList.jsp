@@ -8,6 +8,7 @@
     <title>Students List</title>
 </head>
 <body>
+<a href="/home">Home</a>
 <table>
 
     <th>No.</th>
@@ -19,8 +20,9 @@
 
                 <td><a href="/<c:out value="student/${s.login}"/>"><c:out value="${s.firstName}"/></a></td>
                 <td><a href="/<c:out value="student/${s.login}"/>"><c:out value="${s.lastName}"/></a></td>
-            <form:form method="post">
+            <form:form method="post" commandName="login">
                 <td><button value="${s.login}" formaction="/student/${s.login}/remove" type="submit">remove</button></td>
+                <td><button value="${s.login}" formaction="/student/${s.login}/update" type="submit">update</button></td>
             </form:form>
         </tr>
 

@@ -8,24 +8,27 @@
     <title>Add student</title>
 </head>
 <body>
-
-<form:form action="/addStudent" method="post" commandName="student">
+<a href="/home">Home</a>
+<form:form action="/addStudent" method="post" commandName="student" autocomplete="false">
     <div>
-        <label>Login</label>
+        <form:label path="login">Login</form:label>
         <form:input path="login"></form:input>
+        <form:errors path="login"/>
     </div>
     <div>
         <form:label path="firstName">Name</form:label>
         <form:input path="firstName"/>
+        <form:errors path="firstName"/>
     </div>
     <div>
         <form:label path="lastName">Surname</form:label>
         <form:input path="lastName"/>
-
+        <form:errors path="lastName"/>
     </div>
     <div>
         <form:label path="indexNumber">Index Number</form:label>
         <form:input path="indexNumber"/>
+        <form:errors path="indexNumber"/>
     </div>
     <div>
         <form:label path="gender"/>
