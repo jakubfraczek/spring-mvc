@@ -20,10 +20,10 @@
 
                 <td><a href="/<c:out value="student/${s.login}"/>"><c:out value="${s.firstName}"/></a></td>
                 <td><a href="/<c:out value="student/${s.login}"/>"><c:out value="${s.lastName}"/></a></td>
-            <form:form method="get" commandName="login">
-                <td><button formaction="/student/remove/${s.login}" type="submit">remove</button></td>
-                <td><button formaction="/student/update/${s.login}" type="submit">update</button></td>
-            </form:form>
+
+                <td><a href="/student/remove/${s.login}">remove</a></td>
+                <td><a href="/student/update/${s.login}">update</a></td>
+
         </tr>
 
 

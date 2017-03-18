@@ -12,7 +12,7 @@
     <title>Find students by name</title>
 </head>
 <body>
-<form:form action="/findByName" method="post">
+<form:form action="/student/findByName" method="post">
     <input type="text" id="name" name="name"/>
     <input type="submit" value="find">
 </form:form>

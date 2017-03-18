@@ -9,7 +9,7 @@
 </head>
 <body>
 <a href="/home">Home</a>
-<form:form action="/addStudent" method="post" commandName="student">
+<form:form action="/student/addStudent" method="post" commandName="student">
     <div>
         <form:label path="login">Login</form:label>
         <form:input path="login"></form:input>

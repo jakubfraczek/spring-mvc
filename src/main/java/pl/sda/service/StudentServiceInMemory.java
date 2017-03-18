@@ -1,8 +1,5 @@
 package pl.sda.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import pl.sda.dao.InMemoryStudentDAO;
 import pl.sda.dao.StudentDAO;
 import pl.sda.model.Student;
 

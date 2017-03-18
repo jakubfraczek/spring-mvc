@@ -9,7 +9,7 @@ import pl.sda.repositories.StudentRepository;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service("serviceSQL")
+@Service("serviceStudentSQL")
 public class StudentServiceSQL implements StudentService {
 
     @Autowired

@@ -16,18 +16,13 @@ import pl.sda.service.StudentService;
 import javax.validation.Valid;
 
 @Controller
-public class StudentFormController {
+@RequestMapping("/student")
+public class StudentsController {
 
     @Autowired
-    @Qualifier("serviceSQL")
+    @Qualifier("serviceStudentSQL")
     private StudentService studentService;
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
-    public ModelAndView home() {
-        ModelAndView model = new ModelAndView("/home");
-
-        return model;
-    }
 
     @RequestMapping(value = "/addStudent", method = RequestMethod.GET)
     public ModelAndView studentForm() {
@@ -58,7 +53,7 @@ public class StudentFormController {
         return model;
     }
 
-    @RequestMapping(value = "/student/{login}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{login}", method = RequestMethod.GET)
     public ModelAndView studentDetails(@PathVariable("login") String login) {
         ModelAndView model = new ModelAndView("viewStudents");
         model.addObject("s", studentService.getStudentByLogin(login));
@@ -66,21 +61,21 @@ public class StudentFormController {
     }
 
 
-    @RequestMapping(value = "/student/remove/{login}", method = RequestMethod.GET)
+    @RequestMapping(value = "/remove/{login}", method = RequestMethod.GET)
     public ModelAndView removeStudent(@PathVariable("login") String login) {
         ModelAndView model = new ModelAndView("redirect:/studentsList");
         studentService.removeStudent(login);
         return model;
     }
 
-    @RequestMapping(value = "/student/update/{login}", method = RequestMethod.GET)
+    @RequestMapping(value = "/update/{login}", method = RequestMethod.GET)
     public ModelAndView studentToUpdate(@PathVariable("login") String login) {
         ModelAndView model = new ModelAndView("updateStudent");
         model.addObject("student", studentService.getStudentByLogin(login));
         return model;
     }
 
-    @RequestMapping(value = "/student/update", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView updateStudent(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult) {
         ModelAndView model = new ModelAndView("redirect:/studentsList");
 

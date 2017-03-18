@@ -11,8 +11,9 @@
     <title>Students managment</title>
 </head>
 <body>
-<a href="/addStudent">Add Student</a><br>
-<a href="/studentsList">View Students</a><br>
-<a href="/findByName">Find students by name</a>
+<a href="/student/addStudent">Add Student</a><br>
+<a href="/student/studentsList">View Students</a><br>
+<a href="/student/findByName">Find students by name</a>
+<a href="/library">Library</a>
 </body>
 </html>

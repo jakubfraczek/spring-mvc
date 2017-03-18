@@ -6,44 +6,49 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.List;
 
 @Entity
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "STUDENT_ID")
     private Integer id;
 
     @NotNull(message = "Login name is compulsory")
     @NotBlank(message = "Login name is compulsory")
     @Size(min = 2, max = 30, message = "Login is too short or too long")
-    @Column (name = "login", unique = true)
+    @Column (name = "LOGIN", unique = true)
     private String login;
 
     @NotNull(message = "First name is compulsory")
     @NotBlank(message = "First name is compulsory")
     @Pattern(regexp = "[a-z-A-Z]*", message = "First name has invalid characters")
-    @Column(name = "firstName" )
+    @Column(name = "FIRST_NAME" )
     private String firstName;
 
     @NotNull(message = "Last name is compulsory")
     @NotBlank(message = "Last name is compulsory")
     @Pattern(regexp = "[a-z-A-Z]*", message = "Last name has invalid characters")
-    @Column(name = "lastName")
+    @Column(name = "LAST_NAME")
     private String lastName;
 
     @NotNull(message = "Index number is compulsory")
     @Min(value = 10000000, message = "Index number is too short")
     @Max(value = 99999999, message = "Index number is too long")
-    @Column(name = "indexNumber", unique = true)
+    @Column(name = "INDEX_NUMBER", unique = true)
     private int indexNumber;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "gender")
+    @Column(name = "GENDER")
     private Gender gender;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "specialisation")
+    @Column(name = "SPECIALISATION")
     private Specialisation specialisation;
+
+    @OneToMany(mappedBy = "currentOwner")
+    private List<Book> books;
 
     public Student(String login, String firstName, String lastName, int indexNumber, Gender gender, Specialisation specialisation) {
         this.login = login;

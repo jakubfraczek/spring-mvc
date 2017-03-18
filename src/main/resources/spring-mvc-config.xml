@@ -58,7 +58,7 @@
         <property name="specialisation" value="MGMT"/>
     </bean>
 
-    <bean name="students" class="pl.sda.dao.InMemoryStudentDAO">
+    <bean name="students" class="pl.sda.dao.StudentDAOInMemory">
         <property name="students">
             <list>
                 <ref bean="student1"/>

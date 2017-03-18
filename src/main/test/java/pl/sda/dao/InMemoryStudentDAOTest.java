@@ -11,8 +11,6 @@ import pl.sda.model.Specialisation;
 import pl.sda.model.Student;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -23,7 +21,7 @@ public class InMemoryStudentDAOTest {
     @Resource
     StudentDAO studentsDao;
 
-    InMemoryStudentDAO studentsDaoTest = new InMemoryStudentDAO();
+    StudentDAOInMemory studentsDaoTest = new StudentDAOInMemory();
 
     @Before
     public void setUp() {

@@ -6,7 +6,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class InMemoryStudentDAO implements StudentDAO {
+public class StudentDAOInMemory implements StudentDAO {
 
     private List<Student> students;
 
