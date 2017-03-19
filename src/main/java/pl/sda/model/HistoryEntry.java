@@ -1,5 +1,7 @@
 package pl.sda.model;
 
+import org.hibernate.annotations.ManyToAny;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -7,14 +9,20 @@ import java.util.Date;
 public class HistoryEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ENTRY_ID")
+    @Column(name = "CHECKED_ID")
     private Integer id;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "BOOK")
-    private Book book;
-    private Student owner;
-    private Date borrowDate;
+    private String bookSignature;
+
+    @Column(name = "OWNER")
+    private String studentLogin;
+
+    @Column(name = "CHECKED_DATE")
+    private Date checkedDate;
+
+    @Column(name = "RETURN_DATE")
     private Date returnDate;
 
 }

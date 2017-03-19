@@ -44,7 +44,7 @@ public class Book {
     @JoinColumn(name = "OWNER_ID")
     private Student currentOwner;
 
-    @OneToOne(mappedBy = "book")
+    @OneToMany(mappedBy = "bookSignature")
     private List<HistoryEntry> historyEntry;
 
     public String getSignature() {

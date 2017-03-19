@@ -10,6 +10,6 @@ import java.util.List;
 public interface BookRepository extends JpaRepository<Book, String> {
 
     Book findBySignature(String signature);
-    List<Book> findByAuthorName(String authorName);
+    List<Book> findByAuthorSurname(String authorSurname);
 
 }

@@ -15,8 +15,8 @@ import pl.sda.service.StudentService;
 
 import javax.validation.Valid;
 
-@Controller
 @RequestMapping("/student")
+@Controller
 public class StudentsController {
 
     @Autowired
