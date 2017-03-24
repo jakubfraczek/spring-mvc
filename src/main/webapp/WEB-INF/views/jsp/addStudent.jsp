@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Add student</title>
+    <title>Add student Form</title>
 </head>
 <body>
 <a href="/home">Home</a>

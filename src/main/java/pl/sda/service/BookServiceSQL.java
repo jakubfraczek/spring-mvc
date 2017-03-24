@@ -6,6 +6,7 @@ import pl.sda.model.Book;
 import pl.sda.model.Student;
 import pl.sda.repositories.BookRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("bookServiceSQL")
@@ -38,6 +39,12 @@ public class BookServiceSQL implements BookService {
     @Override
     public List<Book> findBookByAuthor(String authorSurname) {
         return bookRepository.findByAuthorSurname(authorSurname);
+    }
+
+    @Override
+    public List<Book> getAllBook() {
+        List<Book> books = bookRepository.findAll();
+        return books == null ? new ArrayList<>() : books;
     }
 
     @Override

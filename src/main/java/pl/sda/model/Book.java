@@ -35,16 +35,14 @@ public class Book {
     private String authorSurname;
 
     @NotNull(message = "Publication Year name is compulsory")
-    @NotBlank(message = "Publication Year name is compulsory")
     @Column(name = "PUBLICATION_YEAR")
-    @Past
-    private Date publicationYear;
+    private int publicationYear;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "OWNER_ID")
     private Student currentOwner;
 
-    @OneToMany(mappedBy = "bookSignature")
+    @OneToMany(mappedBy = "book")
     private List<HistoryEntry> historyEntry;
 
     public String getSignature() {
@@ -63,11 +61,11 @@ public class Book {
         this.title = title;
     }
 
-    public Date getPublicationYear() {
+    public int getPublicationYear() {
         return publicationYear;
     }
 
-    public void setPublicationYear(Date publicationYear) {
+    public void setPublicationYear(int publicationYear) {
         this.publicationYear = publicationYear;
     }
 

@@ -10,9 +10,7 @@
     <link href="${bootstrapCss}" rel="stylesheet"/>
     <spring:url value="/resources/core/css/cover.css" var="cover"/>
     <link href="${cover}" rel="stylesheet"/>
-
-    <title>My Library Home</title>
-
+    <title>List of books</title>
 </head>
 <body>
 <div class="site-wrapper">
@@ -25,27 +23,34 @@
                     <h3 class="masthead-brand">My Library</h3>
                     <nav>
                         <ul class="nav masthead-nav">
-                            <li class="active"><a href="/home">Home</a></li>
+                            <li><a href="/home">Home</a></li>
                             <li><a href="/student">Students</a></li>
-                            <li><a href="/library">Library</a></li>
+                            <li class="active"><a href="/library">Library</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
-            <div class="inner cover">
-                <h1 class="cover-heading">Welcome in My Library</h1>
-                <p class="lead">Use one option from above</p>
-                <%--<p class="lead">--%>
-                <%--<a href="#" class="btn btn-lg btn-default">Learn more</a>--%>
-                <%--</p>--%>
-            </div>
+            <table class="site-wrapper">
+                <th>Signature</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Publication Year</th>
+                <c:forEach items="${books}" var="book">
+                    <tr>
+                        <td><c:out value="${book.signature}"/></td>
+                        <td><c:out value="${book.title}"/></td>
+                        <td><c:out value="${book.authorName}"/> <c:out value="${book.authorSurname}"/></td>
+                        <td><c:out value="${book.publicationYear}"/></td>
+                    </tr>
 
+                </c:forEach>
 
+            </table>
+            dsadd
         </div>
-
     </div>
-
 </div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <spring:url value="/resources/core/js/bootstrap.min.js" var="bootstrapJs"/>

@@ -23,10 +23,16 @@ public class StudentsController {
     @Qualifier("serviceStudentSQL")
     private StudentService studentService;
 
+    @RequestMapping(method = RequestMethod.GET)
+    public ModelAndView students(){
+        ModelAndView model = new ModelAndView("students");
+
+        return model;
+    }
 
     @RequestMapping(value = "/addStudent", method = RequestMethod.GET)
     public ModelAndView studentForm() {
-        ModelAndView model = new ModelAndView();
+        ModelAndView model = new ModelAndView("addStudent");
         model.addObject("student", new Student());
         model.addObject("specENUM", Specialisation.values());
 
@@ -35,7 +41,7 @@ public class StudentsController {
 
     @RequestMapping(value = "/addStudent", method = RequestMethod.POST)
     public ModelAndView saveStudent(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult) {
-        ModelAndView model = new ModelAndView("redirect:/studentsList");
+        ModelAndView model = new ModelAndView("redirect:/student/studentsList");
 
         if (bindingResult.hasErrors()) {
             return new ModelAndView("addStudent");
@@ -63,7 +69,7 @@ public class StudentsController {
 
     @RequestMapping(value = "/remove/{login}", method = RequestMethod.GET)
     public ModelAndView removeStudent(@PathVariable("login") String login) {
-        ModelAndView model = new ModelAndView("redirect:/studentsList");
+        ModelAndView model = new ModelAndView("redirect:/student/studentsList");
         studentService.removeStudent(login);
         return model;
     }
@@ -77,7 +83,7 @@ public class StudentsController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public ModelAndView updateStudent(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult) {
-        ModelAndView model = new ModelAndView("redirect:/studentsList");
+        ModelAndView model = new ModelAndView("redirect:/student/studentsList");
 
         if (bindingResult.hasErrors()) {
             return new ModelAndView("updateStudent");

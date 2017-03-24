@@ -14,7 +14,7 @@ public class HistoryEntry {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "BOOK")
-    private String bookSignature;
+    private Book book;
 
     @Column(name = "OWNER")
     private String studentLogin;

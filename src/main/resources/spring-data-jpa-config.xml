@@ -6,7 +6,7 @@
  http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
 
-    <jpa:repositories base-package="pl.sda.dao"/>
+    <jpa:repositories base-package="pl.sda.repositories"/>
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         <property name="url" value="jdbc:mysql://localhost/sda"/>

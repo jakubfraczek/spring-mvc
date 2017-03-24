@@ -13,6 +13,7 @@ public interface BookService {
     void updateBook(Book book);
     Book findBookBySignature(String signature);
     List<Book> findBookByAuthor(String authorSurname);
+    List<Book> getAllBook();
     boolean isBorrowed(String signature);
     void borrow(Book book, Student student);
 
