@@ -32,9 +32,9 @@
                 </div>
             </div>
 
-            <h1>Dupa, dupa, cycki!</h1>
+            <h1>Choose what you want to do</h1>
             <a href="/library/addBook">Add Book</a><br>
-            <a href="/library/bookList">Books list</a>
+            <a href="/library/bookList">See list of books</a>
         </div>
     </div>
 </div>

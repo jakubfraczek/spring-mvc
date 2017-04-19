@@ -41,12 +41,13 @@
                         <td><c:out value="${book.title}"/></td>
                         <td><c:out value="${book.authorName}"/> <c:out value="${book.authorSurname}"/></td>
                         <td><c:out value="${book.publicationYear}"/></td>
+                        <td><c:if test="${book.currentOwner == null}"><a href="/library/rent">RENT</a> </c:if></td>
                     </tr>
 
                 </c:forEach>
 
             </table>
-            dsadd
+
         </div>
     </div>
 </div>
