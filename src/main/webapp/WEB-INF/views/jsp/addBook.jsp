@@ -57,11 +57,6 @@
                     <form:input path="publicationYear"/>
                     <form:errors path="publicationYear"/>
                 </div>
-                <div>
-                    <form:label path="currentOwner">currentOwner</form:label>
-                    <form:select path="currentOwner" items="${students}" itemLabel="login"/>
-                    <form:errors path="currentOwner"/>
-                </div>
                 <input type="submit" value="submit">
             </form:form>
         </div>

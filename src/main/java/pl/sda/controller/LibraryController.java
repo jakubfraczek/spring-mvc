@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import pl.sda.model.Book;
 import pl.sda.model.Specialisation;
 import pl.sda.model.Student;
+import pl.sda.service.BookRentDTO;
 import pl.sda.service.BookService;
 import pl.sda.service.StudentService;
 
@@ -79,18 +80,19 @@ public class LibraryController {
     public ModelAndView details(@PathVariable("signature") String signature) {
         ModelAndView model = new ModelAndView("bookDetails");
 
+        model.addObject("bookDTO", new BookRentDTO());
         model.addObject("book", bookService.findBookBySignature(signature));
         model.addObject("students", studentService.getAllStudents());
         return model;
     }
 
     @RequestMapping(value = "/rent", method = RequestMethod.POST)
-    public ModelAndView rent(@ModelAttribute("book") Book book) {
-        ModelAndView model = new ModelAndView("bookDetails");
+    public ModelAndView rent(@ModelAttribute("bookDTO") BookRentDTO bookDTO) {
+        ModelAndView model = new ModelAndView("redirect:/library/bookList");
 
 
 
-        bookService.updateBook(book);
+        bookService.borrow(bookService.findBookBySignature(bookDTO.getBookSignature()), studentService.getStudentByLogin(bookDTO.getStudentLogin()));
 
         return model;
     }

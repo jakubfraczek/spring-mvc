@@ -118,31 +118,5 @@ public class Student {
         this.id = id;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        Student student = (Student) o;
-
-        if (indexNumber != student.indexNumber) return false;
-        if (!id.equals(student.id)) return false;
-        if (!login.equals(student.login)) return false;
-        if (!firstName.equals(student.firstName)) return false;
-        if (!lastName.equals(student.lastName)) return false;
-        if (gender != student.gender) return false;
-        return specialisation == student.specialisation;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + login.hashCode();
-        result = 31 * result + firstName.hashCode();
-        result = 31 * result + lastName.hashCode();
-        result = 31 * result + indexNumber;
-        result = 31 * result + gender.hashCode();
-        result = 31 * result + specialisation.hashCode();
-        return result;
-    }
 }

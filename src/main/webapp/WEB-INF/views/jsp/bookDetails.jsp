@@ -26,8 +26,9 @@
             </c:if>
 
             <c:if test="${book.currentOwner == null}">
-                <form:form action="/library/rent" method="post" commandName="book">
-                    <form:select path="currentOwner" items="${students}" itemLabel="login"/>
+                <form:form action="/library/rent" method="post" commandName="bookDTO">
+                    <form:input type="hidden" path="bookSignature" value="${book.signature}"/>
+                    <form:select path="studentLogin" items="${students}" itemValue="login" itemLabel="login"/>
                     <input type="submit" value="rent">
                 </form:form>
             </c:if>
