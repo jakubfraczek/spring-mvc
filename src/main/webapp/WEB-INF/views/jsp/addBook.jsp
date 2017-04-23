@@ -31,11 +31,11 @@
                     </nav>
                 </div>
             </div>
-            <form:form cssClass="form-group" action="/library/addBook" method="post" commandName="book">
+            <form:form action="/library/addBook" method="post" commandName="book">
                 <div>
-                    <form:label cssClass="form-control" path="signature">Signature</form:label>
-                    <form:input cssClass="form-control" path="signature"/>
-                    <form:errors cssClass="form-control" path="signature"/>
+                    <form:label path="signature">Signature</form:label>
+                    <form:input path="signature"/>
+                    <form:errors path="signature"/>
                 </div>
                 <div>
                     <form:label path="title">Title</form:label>
@@ -56,6 +56,11 @@
                     <form:label path="publicationYear">Publication Year</form:label>
                     <form:input path="publicationYear"/>
                     <form:errors path="publicationYear"/>
+                </div>
+                <div>
+                    <form:label path="currentOwner">currentOwner</form:label>
+                    <form:select path="currentOwner" items="${students}" itemLabel="login"/>
+                    <form:errors path="currentOwner"/>
                 </div>
                 <input type="submit" value="submit">
             </form:form>

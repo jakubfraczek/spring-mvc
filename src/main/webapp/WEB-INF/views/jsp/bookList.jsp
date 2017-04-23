@@ -1,4 +1,5 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -41,7 +42,7 @@
                         <td><c:out value="${book.title}"/></td>
                         <td><c:out value="${book.authorName}"/> <c:out value="${book.authorSurname}"/></td>
                         <td><c:out value="${book.publicationYear}"/></td>
-                        <td><c:if test="${book.currentOwner == null}"><a href="/library/rent">RENT</a> </c:if></td>
+                        <td><a href="/library/details/${book.signature}">details</a></td>
                     </tr>
 
                 </c:forEach>

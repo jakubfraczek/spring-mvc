@@ -14,6 +14,7 @@ import pl.sda.model.Book;
 import pl.sda.model.Specialisation;
 import pl.sda.model.Student;
 import pl.sda.service.BookService;
+import pl.sda.service.StudentService;
 
 import javax.validation.Valid;
 
@@ -24,6 +25,10 @@ public class LibraryController {
     @Autowired
     @Qualifier("bookServiceSQL")
     private BookService bookService;
+
+    @Autowired
+    @Qualifier("serviceStudentSQL")
+    private StudentService studentService;
 
     @RequestMapping(method = RequestMethod.GET)
     public ModelAndView libView() {
@@ -36,7 +41,7 @@ public class LibraryController {
     public ModelAndView addBook() {
         ModelAndView model = new ModelAndView("addBook");
         model.addObject("book", new Book());
-
+        model.addObject("students", studentService.getAllStudents());
         return model;
     }
 
@@ -58,6 +63,7 @@ public class LibraryController {
         ModelAndView model = new ModelAndView("bookList");
 
         model.addObject("books", bookService.getAllBook());
+
         return model;
     }
 
@@ -65,6 +71,26 @@ public class LibraryController {
     public ModelAndView remove(@PathVariable("signature") String signature) {
         ModelAndView model = new ModelAndView("redirect:/library/bookList");
 
+
+        return model;
+    }
+
+    @RequestMapping(value = "/details/{signature}", method = RequestMethod.GET)
+    public ModelAndView details(@PathVariable("signature") String signature) {
+        ModelAndView model = new ModelAndView("bookDetails");
+
+        model.addObject("book", bookService.findBookBySignature(signature));
+        model.addObject("students", studentService.getAllStudents());
+        return model;
+    }
+
+    @RequestMapping(value = "/rent", method = RequestMethod.POST)
+    public ModelAndView rent(@ModelAttribute("book") Book book) {
+        ModelAndView model = new ModelAndView("bookDetails");
+
+
+
+        bookService.updateBook(book);
 
         return model;
     }

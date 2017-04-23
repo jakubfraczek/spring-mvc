@@ -14,7 +14,7 @@ public class Book {
 
     @Id
     @Column(name = "SIGNATURE")
-    @Pattern(regexp = "[A-Z]{3}[/][A-Z-0-9]{4}", message = "Incorrect signature structure")
+    @Pattern(regexp = "[A-Z]{3}[_][A-Z-0-9]{4}", message = "Incorrect signature structure")
     private String signature;
 
     @NotNull(message = "Title name is compulsory")
@@ -100,5 +100,31 @@ public class Book {
 
     public void setAuthorSurname(String authorSurname) {
         this.authorSurname = authorSurname;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Book book = (Book) o;
+
+        if (publicationYear != book.publicationYear) return false;
+        if (!signature.equals(book.signature)) return false;
+        if (!title.equals(book.title)) return false;
+        if (!authorName.equals(book.authorName)) return false;
+        if (!authorSurname.equals(book.authorSurname)) return false;
+        return currentOwner != null ? currentOwner.equals(book.currentOwner) : book.currentOwner == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = signature.hashCode();
+        result = 31 * result + title.hashCode();
+        result = 31 * result + authorName.hashCode();
+        result = 31 * result + authorSurname.hashCode();
+        result = 31 * result + publicationYear;
+        result = 31 * result + (currentOwner != null ? currentOwner.hashCode() : 0);
+        return result;
     }
 }

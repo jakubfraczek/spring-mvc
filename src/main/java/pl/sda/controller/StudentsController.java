@@ -61,7 +61,7 @@ public class StudentsController {
 
     @RequestMapping(value = "/{login}", method = RequestMethod.GET)
     public ModelAndView studentDetails(@PathVariable("login") String login) {
-        ModelAndView model = new ModelAndView("viewStudents");
+        ModelAndView model = new ModelAndView("studentDetails");
         model.addObject("s", studentService.getStudentByLogin(login));
         return model;
     }
@@ -76,7 +76,7 @@ public class StudentsController {
 
     @RequestMapping(value = "/update/{login}", method = RequestMethod.GET)
     public ModelAndView studentToUpdate(@PathVariable("login") String login) {
-        ModelAndView model = new ModelAndView("updateStudent");
+        ModelAndView model = new ModelAndView("studentUpdate");
         model.addObject("student", studentService.getStudentByLogin(login));
         return model;
     }
@@ -86,7 +86,7 @@ public class StudentsController {
         ModelAndView model = new ModelAndView("redirect:/student/studentsList");
 
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("updateStudent");
+            return new ModelAndView("studentUpdate");
         } else {
             studentService.updateStudent(student);
             return model;
