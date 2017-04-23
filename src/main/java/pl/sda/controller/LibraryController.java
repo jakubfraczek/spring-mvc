@@ -97,4 +97,17 @@ public class LibraryController {
         return model;
     }
 
+    @RequestMapping(value = "/return/{signature}", method = RequestMethod.GET)
+    public ModelAndView rent(@PathVariable("signature") String signature) {
+        ModelAndView model = new ModelAndView("redirect:/library/bookList");
+
+
+
+        bookService.returnBook(bookService.findBookBySignature(signature));
+
+        return model;
+    }
+
+
+
 }

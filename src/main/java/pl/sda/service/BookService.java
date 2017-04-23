@@ -16,5 +16,5 @@ public interface BookService {
     List<Book> getAllBook();
     boolean isBorrowed(String signature);
     void borrow(Book book, Student student);
-
+    boolean returnBook(Book book);
 }

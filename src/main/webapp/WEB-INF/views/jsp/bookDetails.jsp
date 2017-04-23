@@ -23,6 +23,7 @@
             <c:if test="${book.currentOwner != null}">
                 <a href="/<c:out value="student/${book.currentOwner.login}"/>"><c:out
                         value="${book.currentOwner.firstName}"/> <c:out value="${book.currentOwner.lastName}"/></a>
+                <a href="/<c:out value="library/return/${book.signature}"/>">return</a>
             </c:if>
 
             <c:if test="${book.currentOwner == null}">

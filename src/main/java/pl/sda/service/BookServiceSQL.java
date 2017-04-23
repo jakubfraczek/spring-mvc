@@ -57,4 +57,11 @@ public class BookServiceSQL implements BookService {
         book.setCurrentOwner(student);
         bookRepository.save(book);
     }
+
+    @Override
+    public boolean returnBook(Book book) {
+        book.setCurrentOwner(null);
+        bookRepository.save(book);
+        return bookRepository.findBySignature(book.getSignature()) == null;
+    }
 }
